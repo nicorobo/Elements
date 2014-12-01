@@ -42,6 +42,18 @@
         gray = color[0]*0.3+color[1]*0.59+color[2]*0.11;
         return chroma((color[0]*(1-amount))+gray*amount, (color[1]*(1-amount))+gray*amount, (color[2]*(1-amount))+gray*amount, color[3]);
     }
+    
+    $('#candy-wrapper').on('mouseover', '.element', elementHover);
+    $('#candy-wrapper').on('mouseout', '.element', elementUnhover);
+    
+    function elementHover(){
+        $(this).css('background', 'lightblue');
+    }
+    function elementUnhover(){
+        var elementID = getID(this);
+        var color = typeColors[theElements[elementID].type]
+        $(this).css('background', color);
+    }
 
     $(window).on('resize', function(){
         for(ratioList in ratios){
@@ -72,6 +84,10 @@
         for(element in theElements){
             aFunction(element);
         }
+    }
+    
+    function getID(element){
+        return $(element).attr('id');
     }
     
     

@@ -3,9 +3,8 @@
 
 .element {
   border: 2px solid white;
-  background-color: lightblue;
-  transition: 0.3s ease background; }
+  transition: 0.3s ease background;
+  cursor: pointer; }
 
 .element:hover {
-  background-color: salmon;
   transition: 0s ease background; }
