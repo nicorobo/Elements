@@ -6,6 +6,7 @@ td{
     width:104.38888px;*/
 }
 .element{
+    border: 2px solid white;
     background-color:lightblue;
     transition: 0.3s ease background;
 }
