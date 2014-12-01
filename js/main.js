@@ -5,6 +5,12 @@
         dynamicDimensions(ratioList, ratios[ratioList]);
     }
 
+    $(window).on('resize', function(){
+        for(ratioList in ratios){
+            dynamicDimensions(ratioList, ratios[ratioList]); 
+        } 
+    });
+
     function dynamicDimensions(selector, properties){
         console.log($('#candy-wrapper').css('width'));
         var windowWidth = window.innerWidth;
@@ -16,10 +22,6 @@
             theSelector.css(style, newDimension); 
         } 
     }
-
-    $(window).on('resize', function(){
-        for(ratioList in ratios){
-            dynamicDimensions(ratioList, ratios[ratioList]); 
-        } 
-    });
+    
+    
 })();
