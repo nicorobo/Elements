@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>.test</title>
+    <style>
+        .block{
+            width: 100px;
+            height: 100px;
+            border-radius:20px;
+            opacity: 0.6;
+            cursor: pointer;
+            display:inline-block;
+            transition: 0.3s ease all;
+        }
+        .block:hover{
+            opacity:1;
+            border-radius:30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/chroma.min.js"></script>
+    <script src='js/variables.js'></script>
+    <script>
+        var blockNum = $('.block').length-1;
+        var count= 0;
+        $('.block').each(function(){
+            var scale = chroma.scale([typeColors['post-transition-metal'], typeColors['alkali-metal'], typeColors['metalloid']]);
+            $(this).css('background', scale(count/blockNum).hex());
+            count++;
+        });
+        
+    </script>
+</body>
+</html>

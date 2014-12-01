@@ -2,9 +2,36 @@
   margin: 12px 15px 0 12px; }
 
 .element {
-  border: 2px solid white;
+  position: relative;
+  border: 1px solid #3e3e3e;
   transition: 0.3s ease background;
   cursor: pointer; }
 
 .element:hover {
   transition: 0s ease background; }
+
+.symbol {
+  position: relative;
+  font-size: 35px;
+  line-height: 1;
+  color: #3e3e3e;
+  font-weight: bolder;
+  text-align: center; }
+
+.number {
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  color: #3e3e3e;
+  line-height: 1;
+  top: 4px;
+  left: 2px; }
+
+.mass {
+  position: absolute;
+  text-align: center;
+  color: #3e3e3e;
+  font-size: 16px;
+  line-height: 1;
+  width: 72px;
+  bottom: 1px; }

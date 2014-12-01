@@ -3,10 +3,14 @@
   ////////////////////////////////////////////
  ///////  Initialization Functions  /////////
 ////////////////////////////////////////////
+
+    var tradMode = true;
+    var calcMode = false;
     
     for(ratioList in ratios){
         dynamicDimensions(ratioList, ratios[ratioList]);
     }
+
 
     forEachElement(colorElements);
 
@@ -21,11 +25,11 @@
         if(typeof elementID == 'string') elementID = [elementID];
         for(var i=0; i<elementID.length; i++){
             color = typeColors[theElements[elementID].type];
-            $('#'+elementID[i]).css('background-color', color.hex());
+            $('#'+elementID[i]).css('background-color', color.alpha(0.8).css());
         }
     }
 
-    var grayElements = function(elementID){
+    function grayElements(elementID){
         if(typeof elementID == 'string') elementID = [elementID];
         for(var i=0; i<elementID.length; i++){
             color = typeColors[theElements[elementID].type];
@@ -43,17 +47,50 @@
         return chroma((color[0]*(1-amount))+gray*amount, (color[1]*(1-amount))+gray*amount, (color[2]*(1-amount))+gray*amount, color[3]);
     }
     
-    $('#candy-wrapper').on('mouseover', '.element', elementHover);
-    $('#candy-wrapper').on('mouseout', '.element', elementUnhover);
+    $('#candy-wrapper').on('mouseover', '.element', function(){
+        var self = this;
+        if(tradMode){
+            elementHover(self);
+        } else if(calcMode){
+            calcElementHover(self);
+        }
+
+    })
+                       .on('mouseout', '.element', function(){
+        var self = this;
+        if(tradMode){
+            elementUnhover(self);
+        } else if(calcMode){
+            calcElementUnhover(self);
+        }
+    });
     
-    function elementHover(){
-        $(this).css('background', 'lightblue');
+    function elementHover(self){
+        var elementID = getID(self);
+        var color = typeColors[theElements[elementID].type]
+        $(self).css('background-color', color);
+        $('.status').css('background-color', color.alpha(0.5).css());
+    }
+
+    function calcElementHover(self){
+        var elementID = getID(self);
+        var color = typeColors[theElements[elementID].type];
+        $(self).css('background-color', color);
+        $('.status').css('background-color', color.alpha(0.5).css());
     }
     
-    function elementUnhover(){
-        var elementID = getID(this);
+    function elementUnhover(self){
+        var elementID = getID(self);
         var color = typeColors[theElements[elementID].type]
-        $(this).css('background', color);
+        $(self).css('background-color', color.alpha(0.8).css());
+        $('.status').css('background-color', 'white');
+    }
+
+    function calcElementUnhover(self){
+        var elementID = getID(self);
+        var color = typeColors[theElements[elementID].type];
+        grayElements(elementID);
+        $('.status').css('background-color', 'white');
     }
 
     $(window).on('resize', function(){
@@ -85,6 +122,7 @@
 
     function writeToTable(element, property){
         var value = theElements[element][property];
+        if(property=='mass') value = Math.round(value * 100) / 100;
         $('#'+element+'>.'+property).html(value);
     }
 
