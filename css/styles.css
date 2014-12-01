@@ -1,0 +1,15 @@
+#candy-wrapper{
+    margin:12px 12px 0 12px;
+}
+td{
+/* height:104.38888px;
+    width:104.38888px;*/
+}
+.element{
+    background-color:lightblue;
+    transition: 0.3s ease background;
+}
+.element:hover{
+    background-color:salmon;
+    transition: 0s ease background;
+}
