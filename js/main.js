@@ -49,6 +49,7 @@
     function elementHover(){
         $(this).css('background', 'lightblue');
     }
+    
     function elementUnhover(){
         var elementID = getID(this);
         var color = typeColors[theElements[elementID].type]
@@ -71,6 +72,21 @@
             theSelector.css(style, newDimension); 
         } 
     }
+    
+    
+    
+  ////////////////////////////////////////////
+ ///////////  Content Functions  ////////////
+////////////////////////////////////////////
+    
+    forEachElement(writeToTable, ['number']);
+    forEachElement(writeToTable, ['symbol']);
+    forEachElement(writeToTable, ['mass']);
+
+    function writeToTable(element, property){
+        var value = theElements[element][property];
+        $('#'+element+'>.'+property).html(value);
+    }
 
 
 
@@ -80,9 +96,10 @@
 
 
 
-    function forEachElement(aFunction){
+    function forEachElement(aFunction, arguments){
+        if(!arguments) var arguments = [];
         for(element in theElements){
-            aFunction(element);
+            aFunction.apply(this, [element].concat(arguments));
         }
     }
     
