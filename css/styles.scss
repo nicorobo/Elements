@@ -1,3 +1,13 @@
+$data-color: #3e3e3e;
+$border: 1px solid #3e3e3e;
+
+//body{
+//    background: url(trees.jpg) no-repeat center center fixed; 
+//    -webkit-background-size: cover;
+//    -moz-background-size: cover;
+//    -o-background-size: cover;
+//    background-size: cover; 
+//}
 #candy-wrapper{
     margin:12px 15px 0 12px;
 }
@@ -8,20 +18,22 @@ td{
 //At 1920px browser width, the elements have 73px height and 74px width;
 .element{
     position: relative;
-    border: 1px solid #3e3e3e;
-    transition: 0.3s ease background;
+    border: $border;
+    transition: 0.3s ease all;
     cursor: pointer;
-}
-.element:hover{
-    transition: 0s ease background;
+    &:hover{
+        transition: 0s ease all;
+    }
 }
 //At 1920px browser width, these guys have 70px width and 50px height.
 //On laptop
+.symbol, .mass, .number{
+    line-height: 1;
+    color: $data-color;
+}
 .symbol{
     position:relative;
     font-size:35px;
-    line-height:1;
-    color: #3e3e3e;
     font-weight:bolder;
     text-align:center;
 }
@@ -30,8 +42,6 @@ td{
     position:absolute;
     font-size:14px;
     font-weight:bold;
-    color: #3e3e3e;
-    line-height:1;
     top:4px;
     left:2px;
 }
@@ -39,9 +49,9 @@ td{
 .mass{
     position:absolute;
     text-align:center;
-    color: #3e3e3e;
     font-size:16px;
-    line-height:1;
     width:72px;
     bottom:1px;
+}
+.status{
 }

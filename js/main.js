@@ -33,7 +33,7 @@
         if(typeof elementID == 'string') elementID = [elementID];
         for(var i=0; i<elementID.length; i++){
             color = typeColors[theElements[elementID].type];
-            $('#'+elementID[i]).css('background-color', grayscale(color).hex());
+            $('#'+elementID[i]).css('background-color', grayscale(color).css());
         }
     }
 
@@ -48,49 +48,53 @@
     }
     
     $('#candy-wrapper').on('mouseover', '.element', function(){
-        var self = this;
+        var $self = $(this);
+        var elementID = getID($self);
+        var color = typeColors[theElements[elementID].type];
         if(tradMode){
-            elementHover(self);
+            hoverColor($self, color);
         } else if(calcMode){
-            calcElementHover(self);
+            calcHoverColor($self, color);
         }
 
     })
                        .on('mouseout', '.element', function(){
-        var self = this;
+        var $self = $(this);
+        var elementID = getID($self);
+        var color = typeColors[theElements[elementID].type];
         if(tradMode){
-            elementUnhover(self);
+            unhoverColor($self, color);
         } else if(calcMode){
-            calcElementUnhover(self);
+            calcUnhoverColor($self, color, elementID);
         }
     });
     
-    function elementHover(self){
-        var elementID = getID(self);
-        var color = typeColors[theElements[elementID].type]
-        $(self).css('background-color', color);
-        $('.status').css('background-color', color.alpha(0.5).css());
+    function hoverColor(self, color){
+        // self.css('background-color', color);
+        $(self).find('.symbol').css('color', 'white');
+        $('.status').css('background-color', color.alpha(0.6).css())
+                    .css('border-top', '1px solid black');
+        // $('body').css('background-color', color.alpha(0.8).css());
     }
 
-    function calcElementHover(self){
-        var elementID = getID(self);
-        var color = typeColors[theElements[elementID].type];
-        $(self).css('background-color', color);
-        $('.status').css('background-color', color.alpha(0.5).css());
+    function calcHoverColor(self, color){
+        self.css('background-color', color);
+       $('.status').css('background-color', color.alpha(0.8).css());
+        // $('body').css('background-color', color.alpha(0.8).css());
     }
     
-    function elementUnhover(self){
-        var elementID = getID(self);
-        var color = typeColors[theElements[elementID].type]
-        $(self).css('background-color', color.alpha(0.8).css());
-        $('.status').css('background-color', 'white');
+    function unhoverColor(self, color){
+        self.css('background-color', color.alpha(0.8).css());
+        $(self).find('.symbol').css('color', '#3e3e3e');
+        $('.status').css('background-color', 'white')
+                    .css('border-top', 'none');
+        // $('body').css('background-color', 'white');
     }
 
-    function calcElementUnhover(self){
-        var elementID = getID(self);
-        var color = typeColors[theElements[elementID].type];
+    function calcUnhoverColor(self, color, elementID){
         grayElements(elementID);
-        $('.status').css('background-color', 'white');
+       $('.status').css('background-color', 'white');
+        // $('body').css('background-color', 'white');
     }
 
     $(window).on('resize', function(){
