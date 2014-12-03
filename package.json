@@ -1,0 +1,31 @@
+{
+  "name": "theElements",
+  "version": "1.0.0",
+  "description": "An awesome preiodic table of the elements.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nickroberts404/theElementsV2.git"
+  },
+  "keywords": [
+    "Periodic",
+    "Table",
+    "Elements",
+    "Chemistry",
+    "Calculator"
+  ],
+  "author": "Nick Roberts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickroberts404/theElementsV2/issues"
+  },
+  "homepage": "https://github.com/nickroberts404/theElementsV2",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
