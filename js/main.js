@@ -4,14 +4,13 @@
  ///////  Initialization Functions  /////////
 ////////////////////////////////////////////
 
-    var tradMode = true;
-    var calcMode = false;
+    
     
     for(ratioList in ratios){
         dynamicDimensions(ratioList, ratios[ratioList]);
     }
 
-    forEachElement(colorElements);
+    colorElements();
 
 
   ////////////////////////////////////////////
@@ -23,10 +22,10 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
         var $self = $(this);
         var elementID = getID($self);
         var color = typeColors[theElements[elementID].type];
-        if(tradMode){
+        if(modes['trad']){
             hoverColor($self, color);
             writeToBox(elementID);
-        } else if(calcMode){
+        } else if(modes['calc']){
             calcHoverColor($self, color);
         }
 
@@ -35,22 +34,26 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
         var $self = $(this);
         var elementID = getID($self);
         var color = typeColors[theElements[elementID].type];
-        if(tradMode){
+        if(modes['trad']){
             unhoverColor($self, color);
             clearBox();
-        } else if(calcMode){
+        } else if(modes['calc']){
             calcUnhoverColor($self, color, elementID);
         }
-    });
+    })
+                       .on('click', '#calc-button', toggleCalculator)
 
 
   ////////////////////////////////////////////
  ///////////  Styling Functions  ////////////
 ////////////////////////////////////////////
 
+    function colorElements(){
+        if(modes['trad']) forEachElement(colorfulElements);
+        if(modes['calc']) forEachElement(grayElements);
+    }
 
-
-    function colorElements(elementID){
+    function colorfulElements(elementID){
         if(typeof elementID == 'string') elementID = [elementID];
         for(var i=0; i<elementID.length; i++){
             color = typeColors[theElements[elementID].type];
@@ -75,35 +78,16 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
     }
     
     function hoverColor(self, color){
-        // self.css('background-color', color);
-        $(self).find('.symbol').css('color', 'white');
+        self.find('.symbol').css('color', 'white');
         $('.status').css('background-color', color.alpha(0.6).css())
                     .css('border-top', '1px solid black');
-        // $('body').css('background-color', color.alpha(0.8).css());
     }
     
     function unhoverColor(self, color){
         self.css('background-color', color.alpha(0.8).css());
-        $(self).find('.symbol').css('color', '#3e3e3e');
+        self.find('.symbol').css('color', '#3e3e3e');
         $('.status').css('background-color', 'transparent')
                     .css('border-top', 'none');
-        // $('body').css('background-color', 'white');
-    }
-
-    //
-    // Calculator Mode Styles
-    //
-
-    function calcHoverColor(self, color){
-        self.css('background-color', color);
-       $('.status').css('background-color', color.alpha(0.8).css());
-        // $('body').css('background-color', color.alpha(0.8).css());
-    }
-
-    function calcUnhoverColor(self, color, elementID){
-        grayElements(elementID);
-       $('.status').css('background-color', 'white');
-        // $('body').css('background-color', 'white');
     }
 
 
@@ -137,7 +121,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
     }
 
     function clearBox(){
-        $('#trad-mode').find('.box-data').each(function(){$(this).html('');});
+        $('.mode').find('.box-data').html('');
     }
 
     function dataDisplay(elementID, selector, dataType, title, prefix){
@@ -178,7 +162,19 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
  ///////////  Utility Functions  ////////////
 ////////////////////////////////////////////
 
-
+    function changeMode(newMode){
+        for (mode in modes){
+            if(mode==newMode){
+                modes[mode] = true;
+                $('#'+mode+'-mode').show();
+            } 
+            else {
+                modes[mode] = false;
+                $('#'+mode+'-mode').hide();
+            }
+        }
+        colorElements();
+    }
 
     function forEachElement(aFunction, arguments){
         if(!arguments) var arguments = [];

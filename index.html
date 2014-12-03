@@ -25,11 +25,15 @@
                      <div class="box-data box-row-3 box-col-2" id="box-specific"></div>
                      <div class="box-data" id="box-type"></div>
                   </div>  
-                  <div class="mode" id="calc-mode">
-                     <div class="box-data" id=""></div>
+                  <div class="mode" id="calc-mode" hidden>
+                     <div class="box-data" id="mass"></div>
+                     <input type="text" id="molecule">
+                     <div class="box-data" id="molecule-name"></div>
+                     <div class="box-data" id="mass-percent"></div>
+                     <div class="box-data" id="clear"></div>
                   </div>
                </td>
-               <td class="space status" id="sidebox-2" colspan=5></td>
+               <td class="space status" id="calc-button" colspan=5></td>
                <td class="element" id="He"><div class="number"></div><div class="symbol"></div><div class="mass"></div></td>
             </tr>
             <tr class="p-row">
@@ -181,5 +185,6 @@
     <script src="js/chroma.min.js"></script>
     <script src='js/variables.js'></script>
     <script src='js/main.js'></script>
+    <script src='js/calculator.js'></script>
 </body>
 </html>
