@@ -11,7 +11,6 @@
         dynamicDimensions(ratioList, ratios[ratioList]);
     }
 
-
     forEachElement(colorElements);
 
 
@@ -86,7 +85,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
     function unhoverColor(self, color){
         self.css('background-color', color.alpha(0.8).css());
         $(self).find('.symbol').css('color', '#3e3e3e');
-        $('.status').css('background-color', 'white')
+        $('.status').css('background-color', 'transparent')
                     .css('border-top', 'none');
         // $('body').css('background-color', 'white');
     }
@@ -138,7 +137,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
     }
 
     function clearBox(){
-        $('.box-data').each(function(){$(this).html('');});
+        $('#trad-mode').find('.box-data').each(function(){$(this).html('');});
     }
 
     function dataDisplay(elementID, selector, dataType, title, prefix){

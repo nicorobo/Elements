@@ -19,11 +19,7 @@ td{
 .element{
     position: relative;
     border: $border;
-    transition: 0.3s ease all;
     cursor: pointer;
-    &:hover{
-        transition: 0s ease all;
-    }
 }
 //At 1920px browser width, these guys have 70px width and 50px height.
 //On laptop
@@ -60,7 +56,7 @@ td{
     position:absolute;
     color:$data-color;
     font-family:monospace;
-    font-size:20px;
+    font-size:19px;
     
 }
 .box-col-1{
@@ -103,6 +99,7 @@ td{
 }
 .data-title{
     font-weight:bold;
+    
 }
 .nodata{
     color:white;

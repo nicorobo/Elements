@@ -4,10 +4,7 @@
 .element {
   position: relative;
   border: 1px solid #3e3e3e;
-  transition: 0.3s ease all;
   cursor: pointer; }
-  .element:hover {
-    transition: 0s ease all; }
 
 .symbol, .mass, .number, .box-data {
   line-height: 1;
@@ -40,7 +37,7 @@
   position: absolute;
   color: #3e3e3e;
   font-family: monospace;
-  font-size: 20px; }
+  font-size: 19px; }
 
 .box-col-1 {
   left: 200px; }
