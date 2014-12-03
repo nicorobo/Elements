@@ -27,7 +27,7 @@ td{
 }
 //At 1920px browser width, these guys have 70px width and 50px height.
 //On laptop
-.symbol, .mass, .number{
+.symbol, .mass, .number, .box-data{
     line-height: 1;
     color: $data-color;
 }
@@ -57,12 +57,54 @@ td{
     position: relative;
 }
 .box-data{
-    position:abolute;
+    position:absolute;
     color:$data-color;
-}
-#box-symbol{
+    font-family:monospace;
+    font-size:20px;
     
+}
+.box-col-1{
+    left:200px;
+}
+.box-col-2{
+    left:480px;
+}
+.box-row-1{
+    top:30px;
+}
+.box-row-2{
+    top:60px;
+}
+.box-row-3{
+    top:90px;
+}
+.box-row-4{
+    top:120px;
+}
+//175px
+#box-symbol{
+    font-family:Arial;
+    font-size: 95px;
+    font-weight: bold;
+    color: white;
+    bottom:70px;
+    left:10px;
 }
 #box-name{
-    
+    font-family:Arial;
+    font-size:60px;
+    bottom:6px;
+    left:15px;
 }
+#box-type{
+    font-size:28px;
+    right:5px;
+    bottom:5px;
+}
+.data-title{
+    font-weight:bold;
+}
+.nodata{
+    color:white;
+}
+

@@ -126,6 +126,15 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
     function writeToBox(elementID){
         dataDisplay(elementID, '#box-symbol', 'symbol', '', '');
         dataDisplay(elementID, '#box-name', 'name', '', '');
+        dataDisplay(elementID, '#box-number', 'number', 'Number:', '');
+        dataDisplay(elementID, '#box-mass', 'mass', 'Mass:', ' g/mol');
+        dataDisplay(elementID, '#box-density', 'density', 'Density:', ' g/cm<sup>3</sup>');
+        dataDisplay(elementID, '#box-electro', 'electronegativity', 'Electronegativity:', '');
+        dataDisplay(elementID, '#box-melting', 'melting', 'Melting:', ' K');
+        dataDisplay(elementID, '#box-boiling', 'boiling', 'Boiling:', ' K');
+        dataDisplay(elementID, '#box-specific', 'specificheat', 'Specific:', ' J/g&#8226;K');
+        dataDisplay(elementID, '#box-type', 'type', '', '');
+
     }
 
     function clearBox(){
@@ -139,7 +148,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
             prefix = ''; }
         if(dataType == 'name') data = capitalize(data);
         if(dataType == 'mass') data = Math.round(data * 1000) / 1000;
-        $(selector).html(title+data+prefix);
+        $(selector).html('<span class="data-title">'+title+'</span> '+data+prefix);
     }
 
 
