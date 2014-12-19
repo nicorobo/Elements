@@ -14,23 +14,25 @@
                <td class="space status" id="sidebox-1"></td>
                <td class="space status" id="the-box" colspan=10 rowspan=3>
                   <div class="mode" id="trad-mode">
-                     <div class="box-data" id="box-symbol"></div>
-                     <div class="box-data" id="box-name"></div>
-                     <div class="box-data box-row-1 box-col-1" id="box-number"></div>
-                     <div class="box-data box-row-2 box-col-1" id="box-mass"></div>
-                     <div class="box-data box-row-3 box-col-1" id="box-density"></div>
-                     <div class="box-data box-row-4 box-col-1" id="box-electro"></div>
-                     <div class="box-data box-row-1 box-col-2" id="box-melting"></div>
-                     <div class="box-data box-row-2 box-col-2" id="box-boiling"></div>
-                     <div class="box-data box-row-3 box-col-2" id="box-specific"></div>
-                     <div class="box-data" id="box-type"></div>
+                     <div class="box-data trad-data" id="box-symbol"></div>
+                     <div class="box-data trad-data" id="box-name"></div>
+                     <div class="box-data  trad-data box-row-1 box-col-1" id="box-number"></div>
+                     <div class="box-data  trad-data box-row-2 box-col-1" id="box-mass"></div>
+                     <div class="box-data  trad-data box-row-3 box-col-1" id="box-density"></div>
+                     <div class="box-data  trad-data box-row-4 box-col-1" id="box-electro"></div>
+                     <div class="box-data  trad-data box-row-1 box-col-2" id="box-melting"></div>
+                     <div class="box-data trad-data box-row-2 box-col-2" id="box-boiling"></div>
+                     <div class="box-data trad-data box-row-3 box-col-2" id="box-specific"></div>
+                     <div class="box-data trad-data" id="box-type"></div>
                   </div>  
                   <div class="mode" id="calc-mode" hidden>
-                     <div class="box-data" id="mass"></div>
-                     <input type="text" id="molecule">
-                     <div class="box-data" id="molecule-name"></div>
-                     <div class="box-data" id="mass-percent"></div>
-                     <div class="box-data" id="clear"></div>
+                     <div class="box-data calc-data" id="molecule-mass"></div>
+                     <div class="box-data calc-data" id="molecule-error"></div>
+                     <input type="text" class="box-data calc-data" id="molecule-text" placeholder="Chemical Formula">
+                     <div class="box-data calc-data" id="molecule-formula"></div>
+                     <div class="box-data calc-data" id="molecule-name"></div>
+                     <div class="box-data calc-data" id="mass-percent"></div>
+                     <div class="box-data calc-data" id="molecule-clear"></div>
                   </div>
                </td>
                <td class="space status" id="calc-button" colspan=5></td>

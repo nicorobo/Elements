@@ -2,6 +2,11 @@
   margin: 12px 15px 0 12px; }
 
 .element {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   position: relative;
   border: 1px solid #3e3e3e;
   cursor: pointer; }
@@ -36,7 +41,9 @@
 .box-data {
   position: absolute;
   color: #3e3e3e;
-  font-family: monospace;
+  font-family: monospace; }
+
+.trad-data {
   font-size: 19px; }
 
 .box-col-1 {
@@ -84,3 +91,65 @@
 
 #calc-button {
   cursor: pointer; }
+
+#molecule-mass {
+  font-size: 55px;
+  bottom: 0px;
+  left: 10px;
+  width: 580px;
+  overflow: hidden; }
+
+#molecule-text {
+  background: #f1f1f1;
+  bottom: 0;
+  right: 100px;
+  border: none;
+  height: 52px;
+  padding-left: 8px;
+  width: 350px;
+  outline: none;
+  font-size: 25px; }
+
+#molecule-formula {
+  font-size: 50px;
+  top: 95px;
+  left: 10px; }
+
+#molecule-name {
+  width: 1040px;
+  text-align: center;
+  font-size: 60px;
+  left: 0;
+  bottom: 100px;
+  font-weight: bold; }
+
+#mass-percent {
+  width: 1000px;
+  background: #f1f1f1;
+  height: 50px;
+  top: 0;
+  text-align: center;
+  font-size: 25px;
+  left: 20px;
+  padding-top: 10px;
+  border-radius: 0 0 10px 10px;
+  overflow: auto; }
+
+#molecule-clear {
+  font-size: 30px;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  height: 52px;
+  width: 100px;
+  line-height: 52px;
+  cursor: pointer;
+  background: rgba(245, 137, 137, 0.8); }
+
+#molecule-error {
+  color: #f58989;
+  font-size: 30px;
+  bottom: 0px;
+  left: 10px;
+  width: 580px;
+  overflow: hidden; }

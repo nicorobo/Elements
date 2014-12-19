@@ -18,7 +18,8 @@
 ////////////////////////////////////////////
 
 
-$('#candy-wrapper').on('mouseover', '.element', function(){
+$('#candy-wrapper')
+                        .on('mouseover', '.element', function(){
         var $self = $(this);
         var elementID = getID($self);
         var color = typeColors[theElements[elementID].type];
@@ -30,7 +31,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
         }
 
     })
-                       .on('mouseout', '.element', function(){
+                        .on('mouseout', '.element', function(){
         var $self = $(this);
         var elementID = getID($self);
         var color = typeColors[theElements[elementID].type];
@@ -41,7 +42,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
             calcUnhoverColor($self, color, elementID);
         }
     })
-                       .on('click', '#calc-button', toggleCalculator)
+                        .on('click', '#calc-button', toggleCalculator)
 
 
   ////////////////////////////////////////////
@@ -56,7 +57,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
     function colorfulElements(elementID){
         if(typeof elementID == 'string') elementID = [elementID];
         for(var i=0; i<elementID.length; i++){
-            color = typeColors[theElements[elementID].type];
+            color = typeColors[theElements[elementID[i]].type];
             $('#'+elementID[i]).css('background-color', color.alpha(0.8).css());
         }
     }
@@ -64,7 +65,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
     function grayElements(elementID){
         if(typeof elementID == 'string') elementID = [elementID];
         for(var i=0; i<elementID.length; i++){
-            color = typeColors[theElements[elementID].type];
+            color = typeColors[theElements[elementID[i]].type];
             $('#'+elementID[i]).css('background-color', grayscale(color).css());
         }
     }
@@ -153,6 +154,7 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
             var style = property;
             var ratio = properties[property];
             newDimension = windowWidth*ratio
+            if(style == 'line-height') newDimension+='px';
             theSelector.css(style, newDimension); 
         } 
     }
@@ -190,3 +192,28 @@ $('#candy-wrapper').on('mouseover', '.element', function(){
     function capitalize(string){
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
+
+    // Disable context menu when right-clicking an element.
+    $('.element').bind('contextmenu', function() {
+        return false;
+    });
+
+    // Searches for asociating values, for example, what is the mass of an element with symbol "Ni"?
+    function elementsAssoc(search, searchValue, target){
+        for(element in theElements){
+            if(theElements[element][search] == searchValue) return theElements[element][target];
+        }
+        return false;
+    }
+
+    function hasUnpairedParentheses(theString){
+        var stack = 0;
+        for(var i=0; i<theString.length; i++){
+            var current = theString.charAt(i);
+            if(current == "(") stack++;
+            else if(current == ")") stack--;
+        }
+        if(stack==0) return false;
+        else return true;
+    }
+    
