@@ -120,6 +120,37 @@ var ratios = {
 		"bottom": 0,
 		"left": 0.005208333333333333,
 		"width": 0.3020833333333333
+	}, 
+	"#scale-title": {
+		"width": 0.5416666666666666,
+		"top": 0.005208333333333333,
+		"font-size": 0.03125
+	},
+	"#units": {
+		"font-size": 0.013020833333333334,
+		"bottom": 0.0026041666666666665,
+		"right": 0.005208333333333333
+	},
+	".scale-data": {
+		"font-size": 0.020833333333333332
+	},
+	".scale-col-1": {
+		"left": 0.057291666666666664
+	},
+	".scale-col-2": {
+		"right": 0.057291666666666664
+	},
+	".scale-row-1": {
+		"bottom": 0.08854166666666667
+	},
+	".scale-row-2": {
+		"bottom": 0.0625
+	},
+	".scale-row-3": {
+		"bottom": 0.036458333333333336
+	},
+	".scale-row-4": {
+		"bottom": 0.010416666666666666
 	}
 }
 ;
@@ -227,14 +258,16 @@ $('#candy-wrapper')
  ///////////  Content Functions  ////////////
 ////////////////////////////////////////////
     
-    forEachElement(writeToTable, ['number']);
-    forEachElement(writeToTable, ['symbol']);
-    forEachElement(writeToTable, ['mass']);
+    forEachElement(writeToTable, ['number', 'number', false]);
+    forEachElement(writeToTable, ['symbol','symbol', false]);
+    forEachElement(writeToTable, ['mass', 'mass', true]);
 
-    function writeToTable(element, property){
+    function writeToTable(element, container, property, doRound){
         var value = theElements[element][property];
-        if(property=='mass') value = Math.round(value * 100) / 100;
-        $('#'+element+'>.'+property).html(value);
+        if(value == '') value = '';
+        // else if(property == 'mass') value = Math.round(value * 100) / 100;
+        else if(doRound) value = Math.round(value * 1000) / 1000;
+        $('#'+element+'>.'+container).html(value);
     }
 
     function writeToBox(elementID){
@@ -305,6 +338,7 @@ $('#candy-wrapper')
                 $('#'+mode+'-mode').hide();
             }
         }
+        forEachElement(writeToTable, ['mass', 'mass', true]);
         colorElements();
     }
 
@@ -362,7 +396,8 @@ $('#candy-wrapper')
         return newString;
     }
     
-;var myMolecule = [];
+;
+var myMolecule = [];
 var totalList = [];
 var elementsList = [];
 
@@ -371,6 +406,23 @@ $('#molecule-text').on('keyup change', handleType);
 $('#molecule-clear').on('click', initiateCalculator)
                     .on('mouseover', clearHover)
                     .on('mouseout', clearUnhover);
+
+                    
+function toggleCalculator(){
+        if(modes['calc']) {
+            changeMode('trad');
+            $('.status').css('background-color', 'transparent')
+                        .css('border-top', 'none');
+            clearBox();
+        }
+        else {
+            changeMode('calc');
+            $('.status').css('background-color', typeColors['other-nonmetal'].alpha(0.6).css())
+                        .css('border-top', '1px solid black');
+            initiateCalculator();
+        }
+}
+
 
 function handleClick(){
     if(modes['calc']){
@@ -427,21 +479,6 @@ function correctInput(mass, dontChangeText){
     var matches = findMatch(elementsTotal);
     if(matches.length > 0) $('#molecule-name').html(matches[0]);
     else $('#molecule-name').html('');
-}
-
-function toggleCalculator(){
-        if(modes['calc']) {
-            changeMode('trad');
-            $('.status').css('background-color', 'transparent')
-                        .css('border-top', 'none');
-            clearBox();
-        }
-        else {
-            changeMode('calc');
-            $('.status').css('background-color', typeColors['other-nonmetal'].alpha(0.6).css())
-                        .css('border-top', '1px solid black');
-            initiateCalculator();
-        }
 }
 
 function calcHoverColor(self, color){
@@ -673,7 +710,7 @@ function arraySame(a, b){
 }
 
 function initiateScale(){
-    $('#scale-title').html('Scales')
+    $('#scale-title').html('Scales');
     $('#no-scale').html('no scale');
     $('#mass-scale').html('mass');
     $('#density-scale').html('density');
@@ -681,10 +718,11 @@ function initiateScale(){
     $('#melt-scale').html('melting point');
     $('#boil-scale').html('boiling point');
     $('#specific-scale').html('specific heat');
+    setScale('noScale');
+    $('#no-scale').css('color', 'white');
 }
 
 $('.scale-data').on('click', function(){
-    console.log('AHHHH');
     var scaleID = $(this).attr('id');
     if(scaleID == 'no-scale') setScale('noScale');
     if(scaleID == 'mass-scale') setScale('mass');
@@ -693,17 +731,38 @@ $('.scale-data').on('click', function(){
     if(scaleID == 'melt-scale') setScale('melting');
     if(scaleID == 'boil-scale') setScale('boiling');
     if(scaleID == 'specific-scale') setScale('specificheat');
+    $('.scale-data').css('color', '');
+    $(this).css('color', 'white');
 });
 
 function setScale(property){
     colorCodeElements(property);
+    if(property == 'noScale') {
+        forEachElement(writeToTable, ['mass', 'mass', true]);
+    }
+    else {
+        forEachElement(writeToTable, ['mass', property, true]);
+    }
+    setUnit(property);
+}
+
+function setUnit(property){
+    var unitsString = ('* in ')
+    if(property == 'noScale') $('#units').html('');
+    if(property == 'mass') $('#units').html('* in g/mol');
+    if(property == 'density') $('#units').html('* in g/cm<sup>3</sup>');
+    if(property == 'electronegativity') $('#units').html('* Pauling Scale');
+    if(property == 'melting') $('#units').html('* in Kelvin');
+    if(property == 'boiling') $('#units').html('* in Kelvin');
+    if(property == 'specificheat') $('#units').html('* in J/g&#8226;K');
 }
 function colorCodeElements(property){
     if(property == 'noScale') colorElements();
     else{
         var propertyStats = minMax(property);
-        var scale = chroma.scale(['#85f780','#f4ee64','#ff6060']);           
-//        var scale = chroma.scale(['#000', '#ce60ff']);
+        var scale = chroma.scale([typeColors['noble-gas'], typeColors['alkali-metal'], typeColors['metalloid']]);
+        // var scale = chroma.scale(['#85f780','#f4ee64','#ff6060']);           
+        // var scale = chroma.scale(['#000', '#ce60ff']);
         if (property == 'specificheat')scale.domain([propertyStats[0], propertyStats[1]], 118, 'log');
         else scale.domain([propertyStats[0], propertyStats[1]]);
         for(element in theElements){
@@ -718,7 +777,6 @@ function colorCodeElements(property){
     }
     return true;
 }
-
 
 function minMax(property){
     var min = 99999999999;

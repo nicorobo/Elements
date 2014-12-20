@@ -1,3 +1,4 @@
+
 var myMolecule = [];
 var totalList = [];
 var elementsList = [];
@@ -7,6 +8,23 @@ $('#molecule-text').on('keyup change', handleType);
 $('#molecule-clear').on('click', initiateCalculator)
                     .on('mouseover', clearHover)
                     .on('mouseout', clearUnhover);
+
+                    
+function toggleCalculator(){
+        if(modes['calc']) {
+            changeMode('trad');
+            $('.status').css('background-color', 'transparent')
+                        .css('border-top', 'none');
+            clearBox();
+        }
+        else {
+            changeMode('calc');
+            $('.status').css('background-color', typeColors['other-nonmetal'].alpha(0.6).css())
+                        .css('border-top', '1px solid black');
+            initiateCalculator();
+        }
+}
+
 
 function handleClick(){
     if(modes['calc']){
@@ -63,21 +81,6 @@ function correctInput(mass, dontChangeText){
     var matches = findMatch(elementsTotal);
     if(matches.length > 0) $('#molecule-name').html(matches[0]);
     else $('#molecule-name').html('');
-}
-
-function toggleCalculator(){
-        if(modes['calc']) {
-            changeMode('trad');
-            $('.status').css('background-color', 'transparent')
-                        .css('border-top', 'none');
-            clearBox();
-        }
-        else {
-            changeMode('calc');
-            $('.status').css('background-color', typeColors['other-nonmetal'].alpha(0.6).css())
-                        .css('border-top', '1px solid black');
-            initiateCalculator();
-        }
 }
 
 function calcHoverColor(self, color){

@@ -103,14 +103,16 @@ $('#candy-wrapper')
  ///////////  Content Functions  ////////////
 ////////////////////////////////////////////
     
-    forEachElement(writeToTable, ['number']);
-    forEachElement(writeToTable, ['symbol']);
-    forEachElement(writeToTable, ['mass']);
+    forEachElement(writeToTable, ['number', 'number', false]);
+    forEachElement(writeToTable, ['symbol','symbol', false]);
+    forEachElement(writeToTable, ['mass', 'mass', true]);
 
-    function writeToTable(element, property){
+    function writeToTable(element, container, property, doRound){
         var value = theElements[element][property];
-        if(property=='mass') value = Math.round(value * 100) / 100;
-        $('#'+element+'>.'+property).html(value);
+        if(value == '') value = '';
+        // else if(property == 'mass') value = Math.round(value * 100) / 100;
+        else if(doRound) value = Math.round(value * 1000) / 1000;
+        $('#'+element+'>.'+container).html(value);
     }
 
     function writeToBox(elementID){
@@ -181,6 +183,7 @@ $('#candy-wrapper')
                 $('#'+mode+'-mode').hide();
             }
         }
+        forEachElement(writeToTable, ['mass', 'mass', true]);
         colorElements();
     }
 

@@ -89,6 +89,9 @@
 .nodata {
   color: white; }
 
+.nodata-table {
+  color: #f58989; }
+
 #calc-button {
   z-index: 200;
   background: lightblue !important;
@@ -170,6 +173,12 @@
   top: 10px;
   font-size: 60px;
   font-weight: bold; }
+
+#units {
+  font-size: 25px;
+  font-weight: 800;
+  bottom: 5px;
+  right: 10px; }
 
 .scale-data {
   -webkit-user-select: none;

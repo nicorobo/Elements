@@ -14,7 +14,7 @@ function toggleScale(){
 }
 
 function initiateScale(){
-    $('#scale-title').html('Scales')
+    $('#scale-title').html('Scales');
     $('#no-scale').html('no scale');
     $('#mass-scale').html('mass');
     $('#density-scale').html('density');
@@ -22,10 +22,11 @@ function initiateScale(){
     $('#melt-scale').html('melting point');
     $('#boil-scale').html('boiling point');
     $('#specific-scale').html('specific heat');
+    setScale('noScale');
+    $('#no-scale').css('color', 'white');
 }
 
 $('.scale-data').on('click', function(){
-    console.log('AHHHH');
     var scaleID = $(this).attr('id');
     if(scaleID == 'no-scale') setScale('noScale');
     if(scaleID == 'mass-scale') setScale('mass');
@@ -34,17 +35,38 @@ $('.scale-data').on('click', function(){
     if(scaleID == 'melt-scale') setScale('melting');
     if(scaleID == 'boil-scale') setScale('boiling');
     if(scaleID == 'specific-scale') setScale('specificheat');
+    $('.scale-data').css('color', '');
+    $(this).css('color', 'white');
 });
 
 function setScale(property){
     colorCodeElements(property);
+    if(property == 'noScale') {
+        forEachElement(writeToTable, ['mass', 'mass', true]);
+    }
+    else {
+        forEachElement(writeToTable, ['mass', property, true]);
+    }
+    setUnit(property);
+}
+
+function setUnit(property){
+    var unitsString = ('* in ')
+    if(property == 'noScale') $('#units').html('');
+    if(property == 'mass') $('#units').html('* in g/mol');
+    if(property == 'density') $('#units').html('* in g/cm<sup>3</sup>');
+    if(property == 'electronegativity') $('#units').html('* Pauling Scale');
+    if(property == 'melting') $('#units').html('* in Kelvin');
+    if(property == 'boiling') $('#units').html('* in Kelvin');
+    if(property == 'specificheat') $('#units').html('* in J/g&#8226;K');
 }
 function colorCodeElements(property){
     if(property == 'noScale') colorElements();
     else{
         var propertyStats = minMax(property);
-        var scale = chroma.scale(['#85f780','#f4ee64','#ff6060']);           
-//        var scale = chroma.scale(['#000', '#ce60ff']);
+        var scale = chroma.scale([typeColors['noble-gas'], typeColors['alkali-metal'], typeColors['metalloid']]);
+        // var scale = chroma.scale(['#85f780','#f4ee64','#ff6060']);           
+        // var scale = chroma.scale(['#000', '#ce60ff']);
         if (property == 'specificheat')scale.domain([propertyStats[0], propertyStats[1]], 118, 'log');
         else scale.domain([propertyStats[0], propertyStats[1]]);
         for(element in theElements){
@@ -59,7 +81,6 @@ function colorCodeElements(property){
     }
     return true;
 }
-
 
 function minMax(property){
     var min = 99999999999;
