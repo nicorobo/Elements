@@ -114,6 +114,8 @@ td{
     color:white;
 }
 #calc-button{
+    z-index:200;
+    background:lightblue !important;
     cursor: pointer;
 }
 #molecule-mass{
@@ -139,6 +141,9 @@ td{
     font-size:50px;
     top:95px;
     left: 10px;
+    width:1020px;
+    overflow: auto;
+    overflow-y:hidden;
 }
 #molecule-name{
     width: 1040px;
@@ -178,4 +183,43 @@ td{
     left: 10px;
     width: 580px;
     overflow: hidden;
+}
+#scale-button{
+    z-index:200;
+    background:salmon !important;
+    cursor: pointer;
+}
+#scale-title{
+    width: 1040px;
+    text-align: center;
+    top:10px;
+    font-size: 60px;
+    font-weight:bold;
+}
+.scale-data{
+    @include unselectable();
+    cursor: pointer;
+    font-size:40px;
+    font-weight: bold;
+}
+.scale-data:hover{
+    color:white;
+}
+.scale-col-1{
+    left:110px;
+}
+.scale-col-2{
+    right:110px;
+}
+.scale-row-1{
+    bottom:170px;
+}
+.scale-row-2{
+    bottom:120px;
+}
+.scale-row-3{
+    bottom:70px;
+}
+.scale-row-4{
+    bottom:20px;
 }

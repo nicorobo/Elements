@@ -28,6 +28,8 @@ $('#candy-wrapper')
             writeToBox(elementID);
         } else if(modes['calc']){
             calcHoverColor($self, color);
+        } else if(modes['scale']){
+            $self.find('.symbol').css('color', 'white');
         }
 
     })
@@ -40,9 +42,12 @@ $('#candy-wrapper')
             clearBox();
         } else if(modes['calc']){
             calcUnhoverColor($self, color, elementID);
+        } else if(modes['scale']){
+            $self.find('.symbol').css('color', '#3e3e3e');
         }
     })
                         .on('click', '#calc-button', toggleCalculator)
+                        .on('click', '#scale-button', toggleScale);
 
 
   ////////////////////////////////////////////
@@ -52,6 +57,7 @@ $('#candy-wrapper')
     function colorElements(){
         if(modes['trad']) forEachElement(colorfulElements);
         if(modes['calc']) forEachElement(grayElements);
+        if(modes['scale']) forEachElement(colorfulElements);
     }
 
     function colorfulElements(elementID){
@@ -215,5 +221,20 @@ $('#candy-wrapper')
         }
         if(stack==0) return false;
         else return true;
+    }
+
+    function properLowerCase(theString){
+        theString = theString.toLowerCase();
+        var newString = '';
+        var inParentheses = false;
+        for(var i=0; i<theString.length; i++){
+            var current = theString.charAt(i);
+            if(current == '(') inParentheses = true; 
+            else if(current == ')') inParentheses = false;
+            else if(current == 'i' && inParentheses) current='I';
+            else if(current == 'v' && inParentheses) current='V';
+            newString+=current;
+        }
+        return newString;
     }
     

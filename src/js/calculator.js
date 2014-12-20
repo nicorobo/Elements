@@ -9,43 +9,37 @@ $('#molecule-clear').on('click', initiateCalculator)
                     .on('mouseout', clearUnhover);
 
 function handleClick(){
-    var elementID = getID(this);
-    var button = event.which;
-    modifyMolecule(elementID, button);
-    displayMolecule();
+    if(modes['calc']){
+        var elementID = getID(this);
+        var button = event.which;
+        modifyMolecule(elementID, button);
+        displayMolecule();  
+    }
 }
 
 function handleType(){
     var content = $('#molecule-text').val();
-    // if(contentMayBeAName(content))
     if(!hasUnpairedParentheses(content)){
         myMolecule = readMolecule(content);
         displayMolecule();
     }
 }
 
-// function contentMayBeAName(string){
-//     if(string.length()<4) return false;
-//     for(var i=0; i<4; i++){
-//         if(!isNaN(string.char
-//     }
-// }
-
 function displayMolecule(dontChangeText){
     var mass = moleculeMass(myMolecule);
-    if(isNaN(mass)){
-        incorrectInput(mass);
-    }
-    else{
-        correctInput(mass, dontChangeText);
-    }
+    if(isNaN(mass)) incorrectInput(mass);
+    else correctInput(mass, dontChangeText);
 }
 
 function incorrectInput(mass){
     myMolecule=[];
+    $('#molecule-formula').html('');
     $('#molecule-mass').html('');
+    $('#molecule-name').html('');
+    $('#mass-percent').html('mass percentages');
+    elementsList = [];
     var content = $('#molecule-text').val();
-    var match = findMatch(content.toLowerCase());
+    var match = findMatch(properLowerCase(content));
     if(match.length<1 && content.length<4) $('#molecule-error').html(mass+' is not an element');
     else if(match.length<1 && content.length>=4)$('#molecule-error').html(content+' is not a compound');
     else {
@@ -55,6 +49,7 @@ function incorrectInput(mass){
 }
 
 function correctInput(mass, dontChangeText){
+    if(!dontChangeText) mass = moleculeMass(myMolecule);
     $('#molecule-error').html('');
     $('#molecule-mass').html(mass.toFixed(4));
     elementsTotal = getElementsTotal(myMolecule,1);
@@ -63,11 +58,11 @@ function correctInput(mass, dontChangeText){
     colorfulElements(elementsList);
     $('#molecule-formula').html(htmlifyMolecule(myMolecule));
     if(!dontChangeText) $('#molecule-text').val(uglifyMolecule(htmlifyMolecule(myMolecule)));
-    $('#mass-percent').html(getPercents(elementsTotal, mass));
+    if(myMolecule.length<1) $('#mass-percent').html('mass percentages');
+    else $('#mass-percent').html(getPercents(elementsTotal, mass));
     var matches = findMatch(elementsTotal);
     if(matches.length > 0) $('#molecule-name').html(matches[0]);
-    else $('#molecule-name').html(''); 
-    console.log(matches);
+    else $('#molecule-name').html('');
 }
 
 function toggleCalculator(){

@@ -7,13 +7,13 @@ module.exports = function(grunt){
 				separator: ';'
 			}, 
 			dist: {
-				src: ['src/js/variables.js', 'src/js/main.js', 'src/js/calculator.js'],
+				src: ['src/js/variables.js', 'src/js/main.js', 'src/js/calculator.js', 'src/js/scale.js'],
 				dest: 'js/app.js'
 			}
 		},
 
 		watch: {
-			files: ['src/js/variables.js', 'src/js/main.js', 'src/js/calculator.js'], 
+			files: ['src/js/variables.js', 'src/js/main.js', 'src/js/calculator.js', 'src/js/scale.js'], 
 			tasks: ['concat']
 		}
 	});
