@@ -111,6 +111,7 @@ $('#candy-wrapper')
         var value = theElements[element][property];
         if(value == '') value = '';
         // else if(property == 'mass') value = Math.round(value * 100) / 100;
+        else if(property == 'density') value = Math.round(value * 10000) / 10000;
         else if(doRound) value = Math.round(value * 1000) / 1000;
         $('#'+element+'>.'+container).html(value);
     }

@@ -23,7 +23,7 @@ function initiateScale(){
     $('#boil-scale').html('boiling point');
     $('#specific-scale').html('specific heat');
     setScale('noScale');
-    $('#no-scale').css('color', 'white');
+    $('#mass-scale').trigger('click');
 }
 
 $('.scale-data').on('click', function(){
