@@ -163,9 +163,10 @@
   overflow: hidden; }
 
 #scale-button {
+  box-sizing: border-box;
   z-index: 200;
-  background: salmon !important;
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative; }
 
 #scale-title {
   width: 1040px;
@@ -210,3 +211,15 @@
 
 .scale-row-4 {
   bottom: 20px; }
+
+.scale-box {
+  fill: #333; }
+
+#scale-button:hover .scale-box {
+  fill: lightblue; }
+
+#svg2 {
+  box-sizing: content-box;
+  position: absolute;
+  top: 0;
+  left: 0; }
