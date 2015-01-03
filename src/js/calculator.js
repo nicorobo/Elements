@@ -26,10 +26,11 @@ function toggleCalculator(){
 }
 
 
-function handleClick(){
+function handleClick(event){
     if(modes['calc']){
         var elementID = getID(this);
         var button = event.which;
+        console.log("blah");
         modifyMolecule(elementID, button);
         displayMolecule();  
     }

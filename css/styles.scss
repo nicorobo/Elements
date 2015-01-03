@@ -116,11 +116,6 @@ td{
 .nodata-table{
     color: #f58989;
 }
-#calc-button{
-    z-index:200;
-    background:lightblue !important;
-    cursor: pointer;
-}
 #molecule-mass{
     font-size:55px;
     bottom: 0px;
@@ -187,12 +182,6 @@ td{
     width: 580px;
     overflow: hidden;
 }
-#scale-button{
-    box-sizing: border-box;
-    z-index:200;
-    cursor: pointer;
-    position: relative;
-}
 #scale-title{
     width: 1040px;
     text-align: center;
@@ -236,12 +225,49 @@ td{
 .scale-box{
     fill:#333;
 }
-#scale-button:hover .scale-box{
+#scale-button:hover #the-scale{
     fill:lightblue;
 }
-#svg2{
+#trad-button:hover #periodic-table{
+    fill:lightblue;
+}
+#calc-button:hover #calc-vector{
+    fill:lightblue;
+}
+svg{
     box-sizing:content-box;
     position: absolute;
+    height: inherit;
+    width: 138px;
     top:0;
+    /*margin-left: 50%;*/
     left:0;
+}
+#trad-button{
+    z-index:200;
+    cursor: pointer;
+    position: relative;
+}
+#periodic-table{
+    fill: $data-color;
+}
+#trad-vector{
+    left: 15px;
+}
+#the-scale{
+    translate
+    fill: $data-color;
+}
+#calc-vector{
+    fill: $data-color;
+}
+#scale-button{
+    z-index:200;
+    cursor: pointer;
+    position: relative;
+}
+#calc-button{
+    z-index:200;
+    cursor: pointer;
+    position: relative;
 }

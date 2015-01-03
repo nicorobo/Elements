@@ -151,5 +151,8 @@ var ratios = {
 	},
 	".scale-row-4": {
 		"bottom": 0.010416666666666666
+	},
+	"#trad-vector": {
+		"left": 0.0052125
 	}
 }

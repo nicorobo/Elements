@@ -151,6 +151,9 @@ var ratios = {
 	},
 	".scale-row-4": {
 		"bottom": 0.010416666666666666
+	},
+	"#trad-vector": {
+		"left": 0.0052125
 	}
 }
 ;
@@ -202,7 +205,8 @@ $('#candy-wrapper')
         }
     })
                         .on('click', '#calc-button', toggleCalculator)
-                        .on('click', '#scale-button', toggleScale);
+                        .on('click', '#scale-button', toggleScale)
+                        .on('click', '#trad-button', toggleTrad);
 
 
   ////////////////////////////////////////////
@@ -318,6 +322,7 @@ $('#candy-wrapper')
             var style = property;
             var ratio = properties[property];
             newDimension = windowWidth*ratio
+            if(selector == 'td' && property=='width') console.log(newDimension);
             if(style == 'line-height') newDimension+='px';
             theSelector.css(style, newDimension); 
         } 
@@ -327,6 +332,15 @@ $('#candy-wrapper')
   ////////////////////////////////////////////
  ///////////  Utility Functions  ////////////
 ////////////////////////////////////////////
+
+    function toggleTrad(){
+            if(!modes['trad']) {
+                changeMode('trad');
+                $('.status').css('background-color', 'transparent')
+                            .css('border-top', 'none');
+                            clearBox();
+            }
+    }
 
     function changeMode(newMode){
         for (mode in modes){
@@ -425,10 +439,11 @@ function toggleCalculator(){
 }
 
 
-function handleClick(){
+function handleClick(event){
     if(modes['calc']){
         var elementID = getID(this);
         var button = event.which;
+        console.log("blah");
         modifyMolecule(elementID, button);
         displayMolecule();  
     }

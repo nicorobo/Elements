@@ -47,7 +47,8 @@ $('#candy-wrapper')
         }
     })
                         .on('click', '#calc-button', toggleCalculator)
-                        .on('click', '#scale-button', toggleScale);
+                        .on('click', '#scale-button', toggleScale)
+                        .on('click', '#trad-button', toggleTrad);
 
 
   ////////////////////////////////////////////
@@ -163,6 +164,7 @@ $('#candy-wrapper')
             var style = property;
             var ratio = properties[property];
             newDimension = windowWidth*ratio
+            if(selector == 'td' && property=='width') console.log(newDimension);
             if(style == 'line-height') newDimension+='px';
             theSelector.css(style, newDimension); 
         } 
@@ -172,6 +174,15 @@ $('#candy-wrapper')
   ////////////////////////////////////////////
  ///////////  Utility Functions  ////////////
 ////////////////////////////////////////////
+
+    function toggleTrad(){
+            if(!modes['trad']) {
+                changeMode('trad');
+                $('.status').css('background-color', 'transparent')
+                            .css('border-top', 'none');
+                            clearBox();
+            }
+    }
 
     function changeMode(newMode){
         for (mode in modes){
