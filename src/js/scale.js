@@ -1,9 +1,9 @@
 function toggleScale(){
     if(modes['scale']) {
-        changeMode('trad');
-        $('.status').css('background-color', 'transparent')
-                    .css('border-top', 'none');
-        clearBox();
+        // changeMode('trad');
+        // $('.status').css('background-color', 'transparent')
+        //             .css('border-top', 'none');
+        // clearBox();
     }
     else {
         changeMode('scale');

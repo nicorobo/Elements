@@ -31,7 +31,6 @@ td{
     cursor: pointer;
 }
 //At 1920px browser width, these guys have 70px width and 50px height.
-//On laptop
 .symbol, .mass, .number, .box-data{
     line-height: 1;
     color: $data-color;
@@ -225,23 +224,37 @@ td{
 .scale-box{
     fill:#333;
 }
-nav{
+#nav-row{
     @include unselectable;
-    font-family: monospace;
+    font-family: Arial, sans-serif;
     font-weight: 700;
     color: $data-color;
-
+    position: relative;
 }
-nav ul li{
-    font-size: 25px;
-    display: inline-block;
-    margin: 0 10px;
+.nav-element{
+    position: absolute;
+}
+.nav-button{
+    bottom: 5px;
+    font-size: 20px;
     cursor: pointer;
     &:hover{
         text-decoration: underline;
     }
 }
+#trad-button{
+    left:30px;
+}
+#calc-button{
+    left:165px;
+}
+#scale-button{
+    left:300px;
+}
 #nav-header{
-    font-size: 30px;
+    top:5px;
+    width: 405px;
+    display:inline-block;
+    font-size: 40px;
     text-align: center;
 }

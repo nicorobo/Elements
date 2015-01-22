@@ -204,24 +204,39 @@
 .scale-box {
   fill: #333; }
 
-nav {
+#nav-row {
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
-  font-family: monospace;
+  font-family: Arial, sans-serif;
   font-weight: 700;
-  color: #3e3e3e; }
+  color: #3e3e3e;
+  position: relative; }
 
-nav ul li {
-  font-size: 25px;
-  display: inline-block;
-  margin: 0 10px;
+.nav-element {
+  position: absolute; }
+
+.nav-button {
+  bottom: 5px;
+  font-size: 20px;
   cursor: pointer; }
-  nav ul li:hover {
+  .nav-button:hover {
     text-decoration: underline; }
 
+#trad-button {
+  left: 30px; }
+
+#calc-button {
+  left: 165px; }
+
+#scale-button {
+  left: 300px; }
+
 #nav-header {
-  font-size: 30px;
+  top: 5px;
+  width: 405px;
+  display: inline-block;
+  font-size: 40px;
   text-align: center; }

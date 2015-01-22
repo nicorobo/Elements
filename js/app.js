@@ -154,6 +154,24 @@ var ratios = {
 	},
 	"#trad-vector": {
 		"left": 0.0052125
+	},
+	".nav-button": {
+		"bottom": 0.003304692663582287,
+		"font-size": 0.013218770654329148
+	},
+	"#trad-button": {
+		"left": 0.01982815598149372
+	},
+	"#calc-button": {
+		"left": 0.10905485789821547
+	},
+	"#scale-button": {
+		"left": 0.1982815598149372
+	},
+	"#nav-header": {
+		"top": 0.003304692663582287,
+		"width": 0.2676801057501652,
+		"font-size": 0.026437541308658295
 	}
 }
 ;
@@ -321,8 +339,7 @@ $('#candy-wrapper')
         for(property in properties){
             var style = property;
             var ratio = properties[property];
-            newDimension = windowWidth*ratio
-            if(selector == 'td' && property=='width') console.log(newDimension);
+            newDimension = windowWidth*ratio;
             if(style == 'line-height') newDimension+='px';
             theSelector.css(style, newDimension); 
         } 
@@ -427,10 +444,10 @@ $('#molecule-clear').on('click', initiateCalculator)
                     
 function toggleCalculator(){
         if(modes['calc']) {
-            changeMode('trad');
-            $('.status').css('background-color', 'transparent')
-                        .css('border-top', 'none');
-            clearBox();
+            // changeMode('trad');
+            // $('.status').css('background-color', 'transparent')
+            //             .css('border-top', 'none');
+            // clearBox();
         }
         else {
             changeMode('calc');
@@ -445,7 +462,6 @@ function handleClick(event){
     if(modes['calc']){
         var elementID = getID(this);
         var button = event.which;
-        console.log("blah");
         modifyMolecule(elementID, button);
         displayMolecule();  
     }
@@ -705,7 +721,6 @@ function arraySame(a, b){
     b = b.sort();
     for (var i = 0; i < a.length; i++) {
         for(var j = 0; j<a[i].length; j++){
-            // console.log(a[i][j]+b[i][j]);
             if (a[i][j] != b[i][j]) return false;
         }
         
@@ -714,10 +729,10 @@ function arraySame(a, b){
 }
 ;function toggleScale(){
     if(modes['scale']) {
-        changeMode('trad');
-        $('.status').css('background-color', 'transparent')
-                    .css('border-top', 'none');
-        clearBox();
+        // changeMode('trad');
+        // $('.status').css('background-color', 'transparent')
+        //             .css('border-top', 'none');
+        // clearBox();
     }
     else {
         changeMode('scale');

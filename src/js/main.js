@@ -163,8 +163,7 @@ $('#candy-wrapper')
         for(property in properties){
             var style = property;
             var ratio = properties[property];
-            newDimension = windowWidth*ratio
-            if(selector == 'td' && property=='width') console.log(newDimension);
+            newDimension = windowWidth*ratio;
             if(style == 'line-height') newDimension+='px';
             theSelector.css(style, newDimension); 
         } 

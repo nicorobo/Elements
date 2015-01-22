@@ -12,10 +12,10 @@ $('#molecule-clear').on('click', initiateCalculator)
                     
 function toggleCalculator(){
         if(modes['calc']) {
-            changeMode('trad');
-            $('.status').css('background-color', 'transparent')
-                        .css('border-top', 'none');
-            clearBox();
+            // changeMode('trad');
+            // $('.status').css('background-color', 'transparent')
+            //             .css('border-top', 'none');
+            // clearBox();
         }
         else {
             changeMode('calc');
@@ -30,7 +30,6 @@ function handleClick(event){
     if(modes['calc']){
         var elementID = getID(this);
         var button = event.which;
-        console.log("blah");
         modifyMolecule(elementID, button);
         displayMolecule();  
     }
@@ -290,7 +289,6 @@ function arraySame(a, b){
     b = b.sort();
     for (var i = 0; i < a.length; i++) {
         for(var j = 0; j<a[i].length; j++){
-            // console.log(a[i][j]+b[i][j]);
             if (a[i][j] != b[i][j]) return false;
         }
         

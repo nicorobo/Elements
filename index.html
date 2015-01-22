@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>.elements</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/styles.css">
@@ -46,15 +48,11 @@
                      <div class="box-data" id="units"></div>
                   </div>
                </td>
-               <td class="space status" colspan=5>
-                  <nav>
-                     <div id="nav-header">Modes</div>
-                     <ul id="nav-options">
-                        <li id='trad-button'>Traditional</li>
-                        <li id='calc-button'>Calculator</li>
-                        <li id='scale-button'>Scale</li>
-                     </ul>
-                  </nav>
+               <td class="space status" id="nav-row" colspan=5>
+                     <div id="nav-header" class="nav-element">Modes</div>
+                     <div id='trad-button' class="nav-element nav-button">Traditional</div>
+                     <div id='calc-button' class="nav-element nav-button">Calculator</div>
+                     <div id='scale-button' class="nav-element nav-button">Scale</div>
                </td>
                <td class="element" id="He"><div class="number"></div><div class="symbol"></div><div class="mass"></div></td>
             </tr>
