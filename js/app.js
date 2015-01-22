@@ -162,7 +162,7 @@ var ratios = {
  ///////  Initialization Functions  /////////
 ////////////////////////////////////////////
 
-    
+    changeMode('trad');
     
     for(ratioList in ratios){
         dynamicDimensions(ratioList, ratios[ratioList]);
@@ -347,10 +347,12 @@ $('#candy-wrapper')
             if(mode==newMode){
                 modes[mode] = true;
                 $('#'+mode+'-mode').show();
+                $('#'+mode+'-button').css('text-decoration', 'underline');
             } 
             else {
                 modes[mode] = false;
                 $('#'+mode+'-mode').hide();
+                $('#'+mode+'-button').css('text-decoration', '');
             }
         }
         forEachElement(writeToTable, ['mass', 'mass', true]);

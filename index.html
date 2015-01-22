@@ -11,7 +11,7 @@
         <table id="p-table">
             <tr class="p-row">
                <td class="element" id="H"><div class="number"></div><div class="symbol"></div><div class="mass"></div></td>
-               <td class="space status" id="trad-button"><svg id="trad-vector" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 1800 1000"> <g id="periodic-table" transform="translate(6,-30.36215) matrix(0.8 0 0 0.8 0 0)"> <path id="periodictable" d="M-6,0v700h200v-200h100v200h1500v-700h-100v100h-500v200h-1000v-200h-100v-100h-100zm300,740v200h1500v-200h-1500z" transform="translate(0,52.36215)" stroke-miterlimit="4" stroke-dasharray="none"/> </g> </svg></td>
+               <td class="space status"></td>
                <td class="space status" id="the-box" colspan=10 rowspan=3>
                   <div class="mode" id="trad-mode">
                      <div class="box-data trad-data" id="box-symbol"></div>
@@ -46,9 +46,16 @@
                      <div class="box-data" id="units"></div>
                   </div>
                </td>
-               <td class="space status" id="" colspan=3></td>
-               <td class="space status" id="scale-button" colspan=1><svg xmlns:dc="http://purl.org/dc/elements/1.1/"xmlns:cc="http://creativecommons.org/ns#"xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"xmlns:svg="http://www.w3.org/2000/svg"xmlns="http://www.w3.org/2000/svg"version="1.1"viewBox="0 0 200 200"id="scale-vector"> <g transform="matrix(0.75 0 0 0.75 0 0) translate(0,-852.36218)"id="the-scale"> <path d="m 40.15625,17.03125 a 5,5 0 0 0 -4.65625,5 5,5 0 0 0 3.28125,4.6875 L 9.875,90.28125 A 32.5,5 0 0 0 9.5,91 a 32.5,5 0 0 0 65,0 32.5,5 0 0 0 -0.78125,-1.03125 L 41.5625,26.90625 A 5,5 0 0 0 43.15625,26.25 l 42.625,17.96875 A 15,15 0 0 0 85,49 15,15 0 0 0 90,60.1875 L 90,175 l -25,0 -15,10 100,0 -15,-10 -25,0 0,-114.875 a 15,15 0 0 0 3.3125,-4.28125 L 154,73 a 5,5 0 0 0 0,0.21875 5,5 0 0 0 2.71875,4.46875 L 128.625,139.5 a 32.5,5 0 0 0 -0.5625,0.90625 32.5,5 0 0 0 65,0 32.5,5 0 0 0 -0.78125,-1.03125 L 160.9375,77.84375 a 5,5 0 0 0 3.0625,-4.625 5,5 0 0 0 -7.1875,-4.5 L 114.84375,51.03125 A 15,15 0 0 0 115,49 15,15 0 0 0 88.1875,39.8125 l -42.6875,-18 a 5,5 0 0 0 -5.34375,-4.78125 z m -0.53125,9.875 A 5,5 0 0 0 40.65625,27 L 72.375,89.28125 A 32.5,5 0 0 0 11.46875,89.3125 L 39.625,26.90625 z M 157.4375,78 a 5,5 0 0 0 2.625,0.125 l 30.875,60.5625 a 32.5,5 0 0 0 -61.125,0.125 L 157.4375,78 z"transform="translate(0,852.36218)"id="rect3023" /> </g> </svg></td>
-               <td class="space status" id="calc-button" colspan=1><svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"> <g id="calc-vector" transform="matrix(0.75 0 0 0.75 0 0) translate(0,-552.36218)"> <path id="calculator" d="M176.44,25.719c-36.69,0-66.44,29.75-66.44,66.437,0,36.684,29.75,66.404,66.44,66.404,10.41,0,20.23-2.39,29-6.65l38.53,33.75c-16.85,22.52-26.81,50.49-26.81,80.78,0,8.12,0.68,16.08,2.06,23.81l-54.97,27.94c-16.24-13.17-36.84-21.03-59.25-21.03-52.467,0-95,43.15-95,96.4,0,53.26,42.533,96.44,95,96.44,52.47,0,95-43.18,95-96.44,0-0.81-0.01-1.6-0.03-2.4l57-28.97c24.41,24.26,58.05,39.25,95.19,39.25,74.55,0,135-60.44,135-135s-60.45-135-135-135c-26.64,0-51.49,7.68-72.41,21l-41.41-36.28c2.9-7.46,4.5-15.53,4.5-24.004,0-36.687-29.72-66.437-66.4-66.437z" transform="translate(0,552.36218)" stroke-miterlimit="4" stroke-dasharray="none"/> </g> </svg></td>
+               <td class="space status" colspan=5>
+                  <nav>
+                     <div id="nav-header">Modes</div>
+                     <ul id="nav-options">
+                        <li id='trad-button'>Traditional</li>
+                        <li id='calc-button'>Calculator</li>
+                        <li id='scale-button'>Scale</li>
+                     </ul>
+                  </nav>
+               </td>
                <td class="element" id="He"><div class="number"></div><div class="symbol"></div><div class="mass"></div></td>
             </tr>
             <tr class="p-row">
