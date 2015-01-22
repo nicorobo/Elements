@@ -7,21 +7,9 @@ $border: 1px solid #3e3e3e;
     -o-user-select: none;
     user-select: none;
 }
-    
 
-//body{
-//    background: url(trees.jpg) no-repeat center center fixed; 
-//    -webkit-background-size: cover;
-//    -moz-background-size: cover;
-//    -o-background-size: cover;
-//    background-size: cover; 
-//}
 #candy-wrapper{
     margin:12px 15px 0 12px;
-}
-td{
-//    height:74px;
-//    width:74px;
 }
 //At 1920px browser width, the elements have 73px height and 74px width;
 .element{
@@ -257,4 +245,18 @@ td{
     display:inline-block;
     font-size: 40px;
     text-align: center;
+}
+#git-container{
+    text-align: center;
+    margin: 30px 0;
+    a:hover #github-icon{
+        fill:#f58989;
+    }
+}
+#github-icon{
+    fill:$data-color;
+    transition:fill 0.3s ease;
+}
+#github-svg{
+    width:64px;
 }

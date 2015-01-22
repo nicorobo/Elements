@@ -172,6 +172,13 @@ var ratios = {
 		"top": 0.003304692663582287,
 		"width": 0.2676801057501652,
 		"font-size": 0.026437541308658295
+	},
+	"#git-container": {
+		"margin-top": 0.015625,
+		"margin-bottom": 0.015625
+	},
+	"#github-svg": {
+		"width": 0.03779661016949153
 	}
 }
 ;
