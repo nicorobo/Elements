@@ -15,6 +15,9 @@
   line-height: 1;
   color: #3e3e3e; }
 
+.empty-row {
+  height: 15px; }
+
 .symbol {
   position: relative;
   font-size: 35px;

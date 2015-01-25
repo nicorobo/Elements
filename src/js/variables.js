@@ -179,5 +179,8 @@ var ratios = {
 	},
 	"#github-svg": {
 		"width": 0.03779661016949153
+	},
+	".empty-row": {
+		"height": 0.010980966325036604
 	}
 }

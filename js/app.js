@@ -179,6 +179,9 @@ var ratios = {
 	},
 	"#github-svg": {
 		"width": 0.03779661016949153
+	},
+	".empty-row": {
+		"height": 0.010980966325036604
 	}
 }
 ;
@@ -656,7 +659,7 @@ function readMolecule(theString){
     var molecule = [];
     var index = -1;
     var firstNum = true;
-    theString= theString.charAt(0).toUpperCase()+theString.slice(1); 
+    theString = theString.charAt(0).toUpperCase()+theString.slice(1); 
     theString = theString.replace("[", "(");
     theString = theString.replace("]", ")");
     for(var i=0; i<theString.length; i++){
@@ -672,7 +675,7 @@ function readMolecule(theString){
                 index++;
                 i+=parenSpan-1;
             }
-            else if(current == current.toUpperCase()){
+            else if(current === current.toUpperCase()){
                 molecule.push([current, 1]);
                 firstNum=true;
                 index++;
