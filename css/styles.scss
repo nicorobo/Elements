@@ -16,7 +16,7 @@ $border: 1px solid #3e3e3e;
     @include unselectable();
     position: relative;
     border: $border;
-    cursor: pointer;
+    cursor: default;
 }
 //At 1920px browser width, these guys have 70px width and 50px height.
 .symbol, .mass, .number, .box-data{

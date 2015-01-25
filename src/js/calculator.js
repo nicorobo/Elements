@@ -19,6 +19,7 @@ function toggleCalculator(){
         }
         else {
             changeMode('calc');
+            $('.element').css('cursor', 'pointer');
             $('.status').css('background-color', typeColors['other-nonmetal'].alpha(0.6).css())
                         .css('border-top', '1px solid black');
             initiateCalculator();

@@ -177,6 +177,7 @@ $('#candy-wrapper')
     function toggleTrad(){
             if(!modes['trad']) {
                 changeMode('trad');
+                $('.element').css('cursor', 'default');
                 $('.status').css('background-color', 'transparent')
                             .css('border-top', 'none');
                             clearBox();

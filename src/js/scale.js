@@ -7,6 +7,7 @@ function toggleScale(){
     }
     else {
         changeMode('scale');
+        $('.element').css('cursor', 'default');
         $('.status').css('background-color', typeColors['metalloid'].alpha(0.6).css())
                     .css('border-top', '1px solid black');
         initiateScale();

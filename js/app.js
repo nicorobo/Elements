@@ -360,6 +360,7 @@ $('#candy-wrapper')
     function toggleTrad(){
             if(!modes['trad']) {
                 changeMode('trad');
+                $('.element').css('cursor', 'default');
                 $('.status').css('background-color', 'transparent')
                             .css('border-top', 'none');
                             clearBox();
@@ -458,6 +459,7 @@ function toggleCalculator(){
         }
         else {
             changeMode('calc');
+            $('.element').css('cursor', 'pointer');
             $('.status').css('background-color', typeColors['other-nonmetal'].alpha(0.6).css())
                         .css('border-top', '1px solid black');
             initiateCalculator();
@@ -743,6 +745,7 @@ function arraySame(a, b){
     }
     else {
         changeMode('scale');
+        $('.element').css('cursor', 'default');
         $('.status').css('background-color', typeColors['metalloid'].alpha(0.6).css())
                     .css('border-top', '1px solid black');
         initiateScale();

@@ -9,7 +9,7 @@
   user-select: none;
   position: relative;
   border: 1px solid #3e3e3e;
-  cursor: pointer; }
+  cursor: default; }
 
 .symbol, .mass, .number, .box-data {
   line-height: 1;
