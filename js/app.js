@@ -519,7 +519,7 @@ function correctInput(mass, dontChangeText){
     colorElements();
     colorfulElements(elementsList);
     $('#molecule-formula').html(htmlifyMolecule(myMolecule));
-    if(!dontChangeText) $('#molecule-text').val(uglifyMolecule(htmlifyMolecule(myMolecule)));
+    if(!dontChangeText) $('#molecule-text').val(uglifyMolecule(myMolecule));
     if(myMolecule.length<1) $('#mass-percent').html('mass percentages');
     else $('#mass-percent').html(getPercents(elementsTotal, mass));
     var matches = findMatch(elementsTotal);
@@ -625,10 +625,15 @@ function htmlifyMolecule(molecule){
         return htmlMolecule;
     }
 
-function uglifyMolecule(text){
-        text = text.replace(/<sub>/g, '');
-        text = text.replace(/<\/sub>/g, '');
-        return text;
+function uglifyMolecule(molecule){
+        var uglyMolecule = ''
+        for(var i=0; i<molecule.length; i++){
+            if(typeof molecule[i][0] =="object") uglyMolecule+="("+uglifyMolecule(molecule[i][0])+")";
+            else uglyMolecule += molecule[i][0];
+            if(molecule[i].length === 3) uglyMolecule +=molecule[i][1];
+            else if(molecule[i][1] > 1) uglyMolecule +=molecule[i][1];
+        }
+        return uglyMolecule;
     }
 
 function moleculeMass(molecule){
@@ -681,9 +686,18 @@ function readMolecule(theString){
                 index++;
             } 
             else{
-                molecule[index][0]+=current;
+                if(molecule[index][1] == 1 && molecule[index].length != 3){
+                    molecule[index][0]+=current;
+                } 
+                else{
+                    molecule.push([current.toUpperCase(), 1]);
+                    firstNum=true;                
+                    index++;
+                }
+
             }
         } else if(isNumber){
+            if(firstNum && current === '1')molecule[index].push('deliberate');
             if(firstNum) molecule[index][1]=current;
             else molecule[index][1]+=current;
             firstNum=false;
