@@ -505,13 +505,14 @@ function incorrectInput(mass){
     if(match.length<1 && content.length<4) $('#molecule-error').html(mass+' is not an element');
     else if(match.length<1 && content.length>=4)$('#molecule-error').html(content+' is not a compound');
     else {
-        myMolecule = match[1].slice();
+        myMolecule = $.extend(true, [], match[1]);
         displayMolecule(true);
     }
+    match = [];
 }
 
 function correctInput(mass, dontChangeText){
-    if(!dontChangeText) mass = moleculeMass(myMolecule);
+    // if(!dontChangeText) mass = moleculeMass(myMolecule);
     $('#molecule-error').html('');
     $('#molecule-mass').html(mass.toFixed(4));
     elementsTotal = getElementsTotal(myMolecule,1);
